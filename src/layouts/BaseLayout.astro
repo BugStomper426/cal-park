@@ -1,0 +1,27 @@
+---
+import '../styles/global.css';
+import InfoBar from '../components/InfoBar.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteNav from '../components/SiteNav.astro';
+import { siteMeta } from '../data/site';
+
+const { title = siteMeta.title, description = siteMeta.description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen bg-slatewood-50 text-slatewood-800">
+    <InfoBar />
+    <SiteNav />
+    <main>
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
+</html>

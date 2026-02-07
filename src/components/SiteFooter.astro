@@ -1,0 +1,49 @@
+---
+import { footer, topBar, siteMeta } from '../data/site';
+---
+
+<footer class="bg-slatewood-900 text-slatewood-200">
+  <div class="container-wide section-spacing">
+    <div class="grid gap-12 lg:grid-cols-[1.2fr_2fr]">
+      <div>
+        <p class="font-serif text-2xl text-white">{footer.newsletter.title}</p>
+        <p class="mt-4 text-sm text-slatewood-300">{footer.newsletter.description}</p>
+        <form class="mt-6 flex flex-col gap-3 sm:flex-row">
+          <input
+            class="w-full rounded-full bg-slatewood-800 px-4 py-3 text-sm text-white placeholder:text-slatewood-500"
+            placeholder={footer.newsletter.placeholder}
+            type="email"
+          />
+          <button class="button-primary" type="button">Sign Up</button>
+        </form>
+      </div>
+      <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+        {footer.columns.map((column) => (
+          <div>
+            <p class="text-xs uppercase tracking-[0.2em] text-slatewood-400">{column.title}</p>
+            <ul class="mt-4 space-y-2 text-sm">
+              {column.links.map((link) => (
+                <li>
+                  <a class="transition hover:text-white" href="#">
+                    {link}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+    <div class="mt-12 border-t border-slatewood-800 pt-8 text-sm text-slatewood-400">
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <p>{footer.bottom}</p>
+        <div class="flex flex-wrap items-center gap-4">
+          <span>{topBar.phone}</span>
+          <span class="text-slatewood-600">•</span>
+          <span>{topBar.address}</span>
+        </div>
+      </div>
+      <p class="mt-4 text-xs uppercase tracking-[0.2em] text-slatewood-600">{siteMeta.title}</p>
+    </div>
+  </div>
+</footer>

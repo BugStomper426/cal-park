@@ -1,0 +1,17 @@
+---
+const { cards } = Astro.props;
+---
+
+<div class="grid gap-6 lg:grid-cols-3">
+  {cards.map((card) => (
+    <article class="card flex h-full flex-col gap-4">
+      <h3 class="font-serif text-2xl text-slatewood-900">{card.title}</h3>
+      <p class="text-sm text-slatewood-600">{card.description}</p>
+      <div class="mt-auto">
+        <a class="button-outline" href={card.cta.href}>
+          {card.cta.label}
+        </a>
+      </div>
+    </article>
+  ))}
+</div>

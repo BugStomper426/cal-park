@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CtaCards from '../components/CtaCards.astro';
+import {
+  hero,
+  ctaCards,
+  servicesHighlight,
+  valuesSection,
+  events,
+  verse,
+  contactSection
+} from '../data/site';
+---
+
+<BaseLayout>
+  <section class="relative overflow-hidden bg-slatewood-900">
+    <div class="absolute inset-0 bg-gradient-to-br from-calumet-900/80 via-slatewood-900/90 to-slatewood-800/90"></div>
+    <div class="relative container-wide section-spacing">
+      <div class="max-w-2xl text-white">
+        <p class="section-eyebrow text-calumet-200">{hero.eyebrow}</p>
+        <h1 class="mt-4 font-serif text-4xl md:text-5xl">{hero.title}</h1>
+        <p class="mt-6 text-lg text-slatewood-200">{hero.description}</p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a class="button-primary" href={hero.primaryCta.href}>
+            {hero.primaryCta.label}
+          </a>
+          <a class="button-outline" href={hero.secondaryCta.href}>
+            {hero.secondaryCta.label}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-spacing bg-slatewood-50">
+    <div class="container-wide">
+      <SectionHeading
+        eyebrow="Begin Here"
+        title="Guidance for every step of the journey."
+        description="Explore helpful starting points and connect with our team for support."
+      />
+      <div class="mt-10">
+        <CtaCards cards={ctaCards} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section-spacing bg-white">
+    <div class="container-wide grid gap-12 lg:grid-cols-[1.2fr_1fr]">
+      <SectionHeading
+        eyebrow={valuesSection.eyebrow}
+        title={valuesSection.title}
+        description={valuesSection.description}
+      />
+      <div class="space-y-4">
+        {valuesSection.highlights.map((item) => (
+          <div class="rounded-2xl border border-slatewood-100 bg-slatewood-50 p-5 text-sm text-slatewood-600">
+            {item}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-spacing bg-slatewood-100">
+    <div class="container-wide">
+      <SectionHeading
+        eyebrow={servicesHighlight.eyebrow}
+        title={servicesHighlight.title}
+        description={servicesHighlight.description}
+      />
+      <div class="mt-10 grid gap-6 lg:grid-cols-3">
+        {servicesHighlight.items.map((item) => (
+          <article class="card">
+            <h3 class="font-serif text-2xl text-slatewood-900">{item.title}</h3>
+            <p class="mt-3 text-sm text-slatewood-600">{item.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-spacing bg-white">
+    <div class="container-wide grid gap-10 lg:grid-cols-[1.2fr_1fr]">
+      <SectionHeading
+        eyebrow={events.eyebrow}
+        title={events.title}
+        description={events.description}
+      />
+      <div class="space-y-4">
+        {events.items.map((item) => (
+          <div class="rounded-2xl border border-slatewood-100 bg-slatewood-50 p-5">
+            <p class="text-sm uppercase tracking-[0.2em] text-calumet-600">{item.date}</p>
+            <h3 class="mt-2 font-serif text-xl text-slatewood-900">{item.title}</h3>
+            <p class="mt-2 text-sm text-slatewood-600">{item.location}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-spacing bg-calumet-700">
+    <div class="container-wide text-center text-white">
+      <p class="section-eyebrow text-calumet-100">{verse.eyebrow}</p>
+      <h2 class="mt-4 font-serif text-3xl md:text-4xl">{verse.title}</h2>
+      <p class="mt-4 text-sm uppercase tracking-[0.2em] text-calumet-100">{verse.reference}</p>
+    </div>
+  </section>
+
+  <section class="section-spacing bg-slatewood-50">
+    <div class="container-wide">
+      <SectionHeading
+        eyebrow={contactSection.eyebrow}
+        title={contactSection.title}
+        description={contactSection.description}
+        align="center"
+      />
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        {contactSection.ctas.map((cta) => (
+          <a class="button-primary" href={cta.href}>
+            {cta.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,14 @@
+---
+import { topBar } from '../data/site';
+---
+
+<div class="bg-slatewood-900 text-slatewood-100">
+  <div class="container-wide flex flex-col gap-2 py-3 text-xs uppercase tracking-[0.2em] sm:flex-row sm:items-center sm:justify-between">
+    <span class="text-slatewood-200">Office Hours: {topBar.hours}</span>
+    <div class="flex flex-wrap items-center gap-4 text-slatewood-100">
+      <span>{topBar.phone}</span>
+      <span class="text-slatewood-400">•</span>
+      <span>{topBar.address}</span>
+    </div>
+  </div>
+</div>

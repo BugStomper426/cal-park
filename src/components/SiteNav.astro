@@ -1,0 +1,31 @@
+---
+import { navigation, siteMeta } from '../data/site';
+---
+
+<nav class="bg-white/95 backdrop-blur">
+  <div class="container-wide flex flex-col gap-4 py-6 lg:flex-row lg:items-center lg:justify-between">
+    <div class="flex items-center gap-4">
+      <div class="flex h-12 w-12 items-center justify-center rounded-full bg-calumet-600 text-white">
+        <span class="font-serif text-lg">CP</span>
+      </div>
+      <div>
+        <p class="font-serif text-xl text-slatewood-900">{siteMeta.title}</p>
+        <p class="text-xs uppercase tracking-[0.2em] text-slatewood-500">Memorial Park</p>
+      </div>
+    </div>
+    <ul class="flex flex-wrap gap-6 text-sm font-semibold uppercase tracking-[0.12em] text-slatewood-600">
+      {navigation.map((item) => (
+        <li>
+          <a class="transition hover:text-calumet-600" href={item.href}>
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <div class="flex items-center gap-3">
+      <a class="button-outline" href="#">
+        Plan a Visit
+      </a>
+    </div>
+  </div>
+</nav>
