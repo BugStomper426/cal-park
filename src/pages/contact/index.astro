@@ -26,17 +26,23 @@ const mainLocation = contactPage.locations[0];
         <p class="text-xs uppercase tracking-[0.2em] text-calumet-100">{contactPage.locationsSection.eyebrow}</p>
         <h2 class="mt-2 font-serif text-3xl">{contactPage.locationsSection.title}</h2>
         <p class="mt-3 text-sm text-slatewood-200">{contactPage.locationsSection.description}</p>
-        <ul class="mt-5 space-y-4 border-t border-white/20 pt-5">
+        <ul class="mt-5 space-y-3 border-t border-white/20 pt-5">
           {contactPage.locations.map((location) => (
-            <li>
-              <p class="font-semibold text-white">{location.name}</p>
+            <li class="grid gap-2 sm:grid-cols-[1fr_auto] sm:items-center">
               <a
-                class="mt-1 block text-sm text-slatewood-200 transition hover:text-calumet-100"
+                class="rounded-2xl border border-white/20 bg-white/5 p-3 transition hover:border-calumet-100/80 hover:bg-white/15"
                 href={location.addressHref}
                 target="_blank"
                 rel="noreferrer"
               >
-                {location.address}
+                <p class="font-semibold text-white">{location.name}</p>
+                <p class="mt-1 text-sm text-slatewood-200">{location.address}</p>
+              </a>
+              <a
+                class="inline-flex items-center justify-center rounded-2xl border border-white/20 bg-white/5 px-3 py-2 text-sm font-semibold text-slatewood-100 transition hover:border-calumet-100/80 hover:bg-white/15 hover:text-white"
+                href={location.phoneHref}
+              >
+                {location.phone}
               </a>
             </li>
           ))}
