@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { contactPage } from '../../data/site';
+
+const mainLocation = contactPage.locations[0];
+---
+
+<BaseLayout title={contactPage.metaTitle} description={contactPage.metaDescription}>
+  <section class="relative overflow-hidden bg-slatewood-900 py-16 md:py-20">
+    <div class="absolute inset-0 bg-gradient-to-br from-calumet-900/85 via-slatewood-900 to-slatewood-800/95"></div>
+    <div class="container-wide relative grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+      <div class="max-w-3xl text-white">
+        <p class="section-eyebrow text-calumet-200">{contactPage.hero.eyebrow}</p>
+        <h1 class="mt-4 font-serif text-4xl leading-tight md:text-5xl">{contactPage.hero.title}</h1>
+        <p class="mt-5 text-lg text-slatewood-200">{contactPage.hero.description}</p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a class="button-primary bg-white text-calumet-700 hover:bg-calumet-100" href={contactPage.hero.primaryCta.href}>
+            {contactPage.hero.primaryCta.label}
+          </a>
+          <a class="button-outline border-white text-white hover:bg-white/10" href="#message-us">
+            {contactPage.hero.secondaryCta.label}
+          </a>
+        </div>
+      </div>
+      <aside class="rounded-3xl border border-white/20 bg-white/10 p-6 text-white backdrop-blur-sm">
+        <p class="text-xs uppercase tracking-[0.2em] text-calumet-100">{contactPage.locationsSection.eyebrow}</p>
+        <h2 class="mt-2 font-serif text-3xl">{contactPage.locationsSection.title}</h2>
+        <p class="mt-3 text-sm text-slatewood-200">{contactPage.locationsSection.description}</p>
+        <ul class="mt-5 space-y-3 border-t border-white/20 pt-5">
+          {contactPage.locations.map((location) => (
+            <li class="grid gap-2 sm:grid-cols-[1fr_auto] sm:items-center">
+              <a
+                class="rounded-2xl border border-white/20 bg-white/5 p-3 transition hover:border-calumet-100/80 hover:bg-white/15"
+                href={location.addressHref}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <p class="font-semibold text-white">{location.name}</p>
+                <p class="mt-1 text-sm text-slatewood-200">{location.address}</p>
+              </a>
+              <a
+                class="inline-flex items-center justify-center rounded-2xl border border-white/20 bg-white/5 px-3 py-2 text-sm font-semibold text-slatewood-100 transition hover:border-calumet-100/80 hover:bg-white/15 hover:text-white"
+                href={location.phoneHref}
+              >
+                {location.phone}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section-spacing bg-white" id="message-us">
+    <div class="container-wide grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+      <article class="rounded-3xl border border-slatewood-200 bg-slatewood-50 p-6 md:p-8">
+        <p class="section-eyebrow">{contactPage.messageSection.eyebrow}</p>
+        <h2 class="mt-2 font-serif text-3xl text-slatewood-900 md:text-4xl">{contactPage.messageSection.title}</h2>
+        <p class="mt-4 text-slatewood-600">{contactPage.messageSection.description}</p>
+
+        <form class="mt-8 space-y-6">
+          <div class="grid gap-5 md:grid-cols-2">
+            <label>
+              <span class="field-label">First Name</span>
+              <input class="field-input" name="firstName" type="text" autocomplete="given-name" required />
+            </label>
+            <label>
+              <span class="field-label">Last Name</span>
+              <input class="field-input" name="lastName" type="text" autocomplete="family-name" required />
+            </label>
+            <label>
+              <span class="field-label">Email</span>
+              <input class="field-input" name="email" type="email" autocomplete="email" required />
+            </label>
+            <label>
+              <span class="field-label">Phone</span>
+              <input class="field-input" name="phone" type="tel" autocomplete="tel" />
+            </label>
+            <label class="md:col-span-2">
+              <span class="field-label">How Can We Help?</span>
+              <select class="field-input" name="inquiryType" required>
+                <option value="" disabled selected>Select a topic</option>
+                {contactPage.messageSection.inquiryOptions.map((option) => (
+                  <option value={option}>{option}</option>
+                ))}
+              </select>
+            </label>
+          </div>
+
+          <label class="block">
+            <span class="field-label">Message</span>
+            <textarea
+              class="field-input min-h-[160px] resize-y"
+              name="message"
+              placeholder="Please share any details that would help our team support you."
+              required
+            ></textarea>
+          </label>
+
+          <div class="flex flex-col gap-4 border-t border-slatewood-200 pt-6 sm:flex-row sm:items-center sm:justify-between">
+            <p class="text-xs uppercase tracking-[0.16em] text-slatewood-500">We typically respond within one business day.</p>
+            <button class="button-primary" type="submit">Submit Request</button>
+          </div>
+        </form>
+      </article>
+
+      <aside class="space-y-5">
+        <article class="rounded-3xl border border-slatewood-200 bg-white p-6 shadow-card">
+          <p class="text-xs uppercase tracking-[0.2em] text-slatewood-500">Need Help Now?</p>
+          <a class="mt-2 block font-serif text-3xl text-slatewood-900 transition hover:text-calumet-700" href={mainLocation.phoneHref}>
+            {mainLocation.phone}
+          </a>
+          <p class="mt-4 text-sm text-slatewood-600">{mainLocation.address}</p>
+          <ul class="mt-4 space-y-1 text-sm text-slatewood-600">
+            {mainLocation.hours.map((hours) => (
+              <li>{hours}</li>
+            ))}
+          </ul>
+          <a class="button-outline mt-6" href={mainLocation.addressHref} target="_blank" rel="noreferrer">
+            Get Directions
+          </a>
+        </article>
+
+        <div class="overflow-hidden rounded-3xl border border-slatewood-200 bg-white shadow-card">
+          <iframe
+            class="h-[300px] w-full"
+            loading="lazy"
+            src={contactPage.mapSection.mapEmbedUrl}
+            title="Calumet Park map"
+          ></iframe>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+</BaseLayout>
