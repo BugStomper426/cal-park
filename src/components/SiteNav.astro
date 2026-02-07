@@ -1,5 +1,7 @@
 ---
 import { navigation, siteMeta } from '../data/site';
+
+const pathname = Astro.url.pathname;
 ---
 
 <nav class="bg-white/95 backdrop-blur">
@@ -16,14 +18,19 @@ import { navigation, siteMeta } from '../data/site';
     <ul class="flex flex-wrap gap-6 text-sm font-semibold uppercase tracking-[0.12em] text-slatewood-600">
       {navigation.map((item) => (
         <li>
-          <a class="transition hover:text-calumet-600" href={item.href}>
+          <a
+            class={`transition hover:text-calumet-600 ${
+              pathname === item.href ? 'text-calumet-700' : ''
+            }`}
+            href={item.href}
+          >
             {item.label}
           </a>
         </li>
       ))}
     </ul>
     <div class="flex items-center gap-3">
-      <a class="button-outline" href="#">
+      <a class="button-outline" href="/contact/">
         Plan a Visit
       </a>
     </div>

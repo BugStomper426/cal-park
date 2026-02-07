@@ -23,7 +23,7 @@
 - [ ] Build About page with story and history sections.
 - [ ] Build Resources pages (FAQs, education).
 - [ ] Implement Obituaries listing or external linking strategy.
-- [ ] Build Contact page with forms and map.
+- [x] Build Contact page with forms and map.
 
 ## Phase 5 — Testing & deployment
 - [ ] Audit accessibility and responsiveness.
