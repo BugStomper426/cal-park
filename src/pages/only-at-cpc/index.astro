@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+
+const popularOptions = [
+  {
+    id: 'aerial-ash-scattering',
+    name: 'Aerial Ash Scattering',
+    description: 'A guided skyward scattering with family viewing and commemorative keepsakes.'
+  },
+  {
+    id: 'horse-and-buggy',
+    name: 'Horse and Buggy Procession',
+    description: 'A dignified ceremonial procession through the park with custom route planning.'
+  },
+  {
+    id: 'harley-hearse',
+    name: 'Harley Hearse',
+    description: 'A memorable tribute option designed to honor unique personal style and legacy.'
+  }
+];
+
+const newAtCpc = [
+  {
+    id: 'angels-flight',
+    name: "Angel's Flight",
+    description: 'A dedicated feature for the inurnment of cremains in a serene community memorial setting.'
+  },
+  {
+    id: 'green-burial',
+    name: 'Green Burial',
+    description: 'Environmentally conscious burial practices with natural resting spaces and simplified materials.'
+  },
+  {
+    id: 'hike-in-ash-scattering',
+    name: 'Hike-In Ash Scattering',
+    description: 'Guided ash scattering along peaceful trails and scenic overlooks inside the park.'
+  },
+  {
+    id: 'scattering-gardens',
+    name: 'Scattering Gardens',
+    description: 'Landscaped garden areas designed for private and communal ash scattering ceremonies.'
+  }
+];
+---
+
+<BaseLayout
+  title="Only at CPC | Calumet Park Memorial"
+  description="Signature offerings available only at Calumet Park, including specialty memorial options."
+>
+  <PageHero
+    eyebrow="Our Services"
+    title="Only at Calumet Park"
+    description="Explore signature experiences and new offerings designed to create meaningful remembrance moments for every family."
+    primaryCta={{ label: 'Plan With Our Team', href: '/contact/' }}
+    secondaryCta={{ label: 'View Service Hub', href: '/services/' }}
+  />
+
+  <section class="section-spacing bg-white">
+    <div class="container-wide">
+      <h2 class="section-title">Popular Options</h2>
+      <p class="section-lead">Distinctive offerings that families request most often.</p>
+      <div class="mt-8 grid gap-6 lg:grid-cols-3">
+        {popularOptions.map((option) => (
+          <article class="card" id={option.id}>
+            <h3 class="font-serif text-2xl text-slatewood-900">{option.name}</h3>
+            <p class="mt-3 text-sm text-slatewood-600">{option.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-spacing bg-slatewood-100">
+    <div class="container-wide">
+      <h2 class="section-title">New at CPC</h2>
+      <p class="section-lead">Special offerings expanding personalized remembrance options.</p>
+      <div class="mt-8 grid gap-6 md:grid-cols-2">
+        {newAtCpc.map((option) => (
+          <article class="card" id={option.id}>
+            <h3 class="font-serif text-2xl text-slatewood-900">{option.name}</h3>
+            <p class="mt-3 text-sm text-slatewood-600">{option.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-spacing bg-white">
+    <div class="container-wide rounded-3xl border border-slatewood-200 bg-slatewood-50 p-8 text-center">
+      <h2 class="font-serif text-3xl text-slatewood-900">Ready to explore an option in detail?</h2>
+      <p class="mt-3 text-slatewood-600">A Calumet Park counselor can help choose the best fit for your family and timeline.</p>
+      <a class="button-primary mt-6" href="/contact/">Contact Our Team</a>
+    </div>
+  </section>
+</BaseLayout>

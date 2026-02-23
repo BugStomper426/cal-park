@@ -90,11 +90,14 @@ import {
       />
       <div class="space-y-4">
         {events.items.map((item) => (
-          <div class="rounded-2xl border border-slatewood-100 bg-slatewood-50 p-5">
+          <a
+            class="block rounded-2xl border border-slatewood-100 bg-slatewood-50 p-5 transition hover:border-calumet-200 hover:bg-white"
+            href={item.href}
+          >
             <p class="text-sm uppercase tracking-[0.2em] text-calumet-600">{item.date}</p>
             <h3 class="mt-2 font-serif text-xl text-slatewood-900">{item.title}</h3>
             <p class="mt-2 text-sm text-slatewood-600">{item.location}</p>
-          </div>
+          </a>
         ))}
       </div>
     </div>

@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+
+const tourStops = [
+  'Main entrance and welcome center',
+  'Reflection gardens and gathering spaces',
+  'Veterans memorial area',
+  'Chapel and ceremony locations'
+];
+---
+
+<BaseLayout
+  title="Virtual Tour | Calumet Park Memorial"
+  description="Take a virtual tour of Calumet Park Memorial grounds and key locations."
+>
+  <PageHero
+    eyebrow="About Us"
+    title="Virtually Tour CPC"
+    description="Preview key areas of Calumet Park before your visit with guided media and location links."
+    primaryCta={{ label: 'Open Contact + Locations', href: '/contact/' }}
+    secondaryCta={{ label: 'Learn About Calumet Park', href: '/about/' }}
+  />
+
+  <section class="section-spacing bg-white">
+    <div class="container-wide grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+      <div class="overflow-hidden rounded-3xl border border-slatewood-200 bg-white shadow-card">
+        <iframe
+          class="h-[420px] w-full"
+          src="https://www.youtube.com/embed/aqz-KE-bpKQ"
+          title="Virtual tour placeholder"
+          loading="lazy"
+        ></iframe>
+      </div>
+      <article class="card">
+        <h2 class="font-serif text-3xl text-slatewood-900">Tour highlights</h2>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-slatewood-600">
+          {tourStops.map((stop) => (
+            <li>{stop}</li>
+          ))}
+        </ul>
+        <a class="button-primary mt-6" href="/contact/">Plan an in-person visit</a>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

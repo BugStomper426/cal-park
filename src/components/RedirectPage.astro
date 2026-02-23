@@ -1,0 +1,23 @@
+---
+const { to, title = 'Redirecting...' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content={`0;url=${to}`} />
+    <link rel="canonical" href={to} />
+    <meta name="robots" content="noindex" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <p>
+      Redirecting to <a href={to}>{to}</a>.
+    </p>
+    <script is:inline define:vars={{ to }}>
+      window.location.replace(to);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+
+<BaseLayout
+  title="Path to Salvation Interactive | Calumet Park Memorial"
+  description="Path to Salvation interactive experience placeholder and access information."
+>
+  <PageHero
+    eyebrow="Resources + Education"
+    title="The Path to Salvation"
+    description="This interactive experience is being updated. The route is preserved so legacy links continue to work."
+    primaryCta={{ label: 'Open Legacy Experience', href: 'https://mycalumetpark.com/' }}
+    secondaryCta={{ label: 'Return Home', href: '/' }}
+  />
+
+  <section class="section-spacing bg-white">
+    <div class="container-wide max-w-3xl">
+      <article class="card">
+        <h2 class="font-serif text-3xl text-slatewood-900">Phase 1 placeholder</h2>
+        <p class="mt-4 text-slatewood-600">
+          The full interactive journey will return with refreshed media and improved navigation. Until then, this page keeps the canonical URL live.
+        </p>
+        <ul class="mt-5 list-disc space-y-2 pl-5 text-sm text-slatewood-600">
+          <li>Legacy route preserved for SEO and existing bookmarks.</li>
+          <li>Temporary static copy + outbound legacy link provided.</li>
+          <li>Future update can embed the full interactive module here.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

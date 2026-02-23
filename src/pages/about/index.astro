@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+
+<BaseLayout title="About | Calumet Park Memorial" description="History, mission, and grounds overview for Calumet Park Memorial.">
+  <PageHero
+    eyebrow="About Us"
+    title="About Calumet Park"
+    description="A heritage of service, peaceful grounds, and compassionate care for families across Northwest Indiana."
+    primaryCta={{ label: 'Explore GraveFinder', href: '/gravefinder/' }}
+    secondaryCta={{ label: 'Visit Contact Page', href: '/contact/' }}
+  />
+
+  <section class="section-spacing bg-white">
+    <div class="container-wide grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+      <article>
+        <h2 class="section-title">Heritage and history</h2>
+        <p class="section-lead">
+          For generations, Calumet Park has served families with memorial services rooted in dignity, care, and long-term stewardship.
+        </p>
+        <p class="mt-4 text-slatewood-600">
+          Our mission remains focused on supporting families through immediate needs, thoughtful planning, and meaningful remembrance experiences.
+        </p>
+      </article>
+      <article class="card">
+        <p class="text-xs uppercase tracking-[0.2em] text-slatewood-500">Veterans Tribute</p>
+        <blockquote class="mt-4 font-serif text-3xl text-slatewood-900">
+          “We remember every act of service with honor, gratitude, and lasting respect.”
+        </blockquote>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-spacing bg-slatewood-100">
+    <div class="container-wide">
+      <h2 class="section-title">Grounds beauty</h2>
+      <p class="section-lead">A peaceful environment designed for reflection and remembrance throughout the year.</p>
+      <div class="mt-8 grid gap-6 md:grid-cols-3">
+        <div class="aspect-[4/3] rounded-3xl border border-slatewood-200 bg-gradient-to-br from-calumet-100 to-slatewood-100 p-6 text-sm text-slatewood-600">
+          Reflection gardens and seasonal plantings
+        </div>
+        <div class="aspect-[4/3] rounded-3xl border border-slatewood-200 bg-gradient-to-br from-slatewood-100 to-calumet-50 p-6 text-sm text-slatewood-600">
+          Memorial pathways and gathering spaces
+        </div>
+        <div class="aspect-[4/3] rounded-3xl border border-slatewood-200 bg-gradient-to-br from-calumet-50 to-slatewood-100 p-6 text-sm text-slatewood-600">
+          Chapels and dedicated veteran areas
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-spacing bg-white">
+    <div class="container-wide rounded-3xl border border-slatewood-200 bg-slatewood-50 p-8">
+      <h2 class="font-serif text-3xl text-slatewood-900">Explore the park: sections, blocks, and lots</h2>
+      <p class="mt-4 text-slatewood-600">
+        Section numbers define large areas of the cemetery. Blocks narrow the area, and lot identifiers locate specific memorial spaces.
+        This structure helps families and visitors quickly find loved ones.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-4">
+        <a class="button-primary" href="/gravefinder/">Open GraveFinder Guide</a>
+        <a class="button-outline" href="/downloads/park-map.pdf">Download Park Map</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

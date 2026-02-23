@@ -3,6 +3,7 @@ import '../styles/global.css';
 import InfoBar from '../components/InfoBar.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import SiteNav from '../components/SiteNav.astro';
+import CookieNotice from '../components/CookieNotice.astro';
 import { siteMeta } from '../data/site';
 
 const { title = siteMeta.title, description = siteMeta.description } = Astro.props;
@@ -22,6 +23,7 @@ const { title = siteMeta.title, description = siteMeta.description } = Astro.pro
     <main>
       <slot />
     </main>
+    <CookieNotice />
     <SiteFooter />
   </body>
 </html>

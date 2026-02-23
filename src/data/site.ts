@@ -1,3 +1,16 @@
+export type SiteLink = {
+  label: string;
+  href: string;
+  external?: boolean;
+};
+
+export type NavigationItem = {
+  label: string;
+  href?: string;
+  external?: boolean;
+  children?: SiteLink[];
+};
+
 export const siteMeta = {
   title: 'Calumet Park Memorial',
   description:
@@ -6,16 +19,46 @@ export const siteMeta = {
 
 export const topBar = {
   hours: 'Mon–Sat 9:00am–5:00pm',
-  phone: '(708) 891-4220',
+  phone: '(219) 769-8803',
   address: '2305 W. 73rd Ave, Merrillville, IN'
 };
 
-export const navigation = [
-  { label: 'Recent Loss', href: '#' },
-  { label: 'Our Services', href: '#' },
-  { label: 'Resources + Education', href: '#' },
-  { label: 'About Us', href: '#' },
-  { label: 'Obituaries', href: '#' },
+export const navigation: NavigationItem[] = [
+  {
+    label: 'Recent Loss',
+    children: [
+      { label: 'Immediate Need', href: '/immediate-need/' },
+      { label: 'Obituaries', href: 'https://obits.mycalumetpark.com', external: true },
+      { label: 'Grief Counseling', href: '/grief-counseling/' }
+    ]
+  },
+  {
+    label: 'Our Services',
+    children: [
+      { label: 'Only at Calumet Park', href: '/only-at-cpc/' },
+      { label: 'Burials, Cremation and More', href: '/services/' },
+      { label: 'Veterans', href: '/veterans/' },
+      { label: 'Pre-planning', href: '/pre-planning/' }
+    ]
+  },
+  {
+    label: 'Resources + Education',
+    children: [
+      { label: "Calumet Park's GraveFinder", href: '/gravefinder/' },
+      { label: 'The Path To Salvation', href: '/path-to-salvation-interactive/' },
+      { label: 'FAQs', href: '/faqs/' }
+    ]
+  },
+  {
+    label: 'About Us',
+    children: [
+      { label: 'About Calumet Park', href: '/about/' },
+      { label: 'Virtually Tour CPC', href: '/virtual-tour/' },
+      { label: 'Locations + Hours', href: '/contact/' }
+    ]
+  },
+  { label: 'Shop Urns', href: 'https://mycalumetpark.com/shop-urns/', external: true },
+  { label: 'Obituaries', href: 'https://obits.mycalumetpark.com', external: true },
   { label: 'Contact', href: '/contact/' }
 ];
 
@@ -24,8 +67,8 @@ export const hero = {
   title: 'A peaceful place of remembrance and care.',
   description:
     'We honor every life with grace, guidance, and thoughtful planning. Our team supports families with memorial services, peaceful grounds, and compassionate resources.',
-  primaryCta: { label: 'Start Pre-Planning', href: '#' },
-  secondaryCta: { label: 'Speak With Our Team', href: '#' }
+  primaryCta: { label: 'Start Pre-Planning', href: '/pre-planning/' },
+  secondaryCta: { label: 'Speak With Our Team', href: '/contact/' }
 };
 
 export const ctaCards = [
@@ -33,19 +76,19 @@ export const ctaCards = [
     title: 'Pre-Plan With Confidence',
     description:
       'Plan ahead with our caring counselors and ensure your wishes are honored with clarity and ease.',
-    cta: { label: 'Explore Pre-Planning', href: '#' }
+    cta: { label: 'Explore Pre-Planning', href: '/pre-planning/' }
   },
   {
     title: 'Immediate Need Support',
     description:
       'We are available day and night to guide families through arrangements, paperwork, and memorial selections.',
-    cta: { label: 'Get Immediate Help', href: '#' }
+    cta: { label: 'Get Immediate Help', href: '/immediate-need/' }
   },
   {
     title: 'Obituaries & Tributes',
     description:
       'Share memories, service details, and heartfelt tributes in a respectful space for your loved one.',
-    cta: { label: 'View Obituaries', href: '#' }
+    cta: { label: 'View Obituaries', href: 'https://obits.mycalumetpark.com', external: true }
   }
 ];
 
@@ -92,19 +135,22 @@ export const events = {
     'Join our seasonal services and community programs designed to honor and uplift.',
   items: [
     {
-      title: 'Candlelight Remembrance',
-      date: 'December 12 · 6:00 PM',
-      location: 'Memorial Chapel'
+      title: "Mother's Day Remembrance",
+      date: 'May 10, 2026',
+      location: 'Reflection Gardens',
+      href: '/mothers-day/'
     },
     {
-      title: 'Spring Renewal Service',
-      date: 'March 22 · 2:00 PM',
-      location: 'Reflection Gardens'
+      title: 'Memorial Weekend Tribute',
+      date: 'May 23, 2026',
+      location: 'Veterans Plaza',
+      href: '/memorial-weekend/'
     },
     {
-      title: 'Grief Support Circle',
-      date: 'Monthly · First Thursday',
-      location: 'Family Center'
+      title: 'Light the Darkness 5K',
+      date: 'September 19, 2026',
+      location: 'Calumet Park Grounds',
+      href: '/5k/'
     }
   ]
 };
@@ -121,7 +167,7 @@ export const contactSection = {
   description:
     'Reach out to our counselors for planning support, service coordination, or answers to your questions.',
   ctas: [
-    { label: 'Call (708) 891-4220', href: 'tel:17088914220' },
+    { label: 'Call (219) 769-8803', href: 'tel:12197698803' },
     { label: 'Schedule a Visit', href: '/contact/' }
   ]
 };
@@ -142,7 +188,7 @@ export const contactPage = {
     eyebrow: 'Our Locations',
     title: 'Visit any Calumet Park location across Northwest Indiana.',
     description:
-      'Find addresses, phone numbers, and hours of operation for our cemetery, funeral homes, and chapels.'
+      'Find addresses, phone numbers, fax numbers, and hours of operation for our cemetery, funeral homes, and chapels.'
   },
   locations: [
     {
@@ -187,7 +233,7 @@ export const contactPage = {
     description:
       'Schedule a call at a time that works for you, or call our team now for immediate guidance.',
     ctas: [
-      { label: 'Schedule a Call', href: '#message-us' },
+      { label: 'Schedule a Call', href: '#schedule' },
       { label: 'Call Now (219) 769-8803', href: 'tel:12197698803' }
     ]
   },
@@ -197,7 +243,7 @@ export const contactPage = {
     description:
       'Share what you need and we will connect you to the right team member for planning, services, or general support.',
     inquiryOptions: [
-      "I want to pre-plan.",
+      'I want to pre-plan.',
       "I'd like to schedule a general meeting.",
       "I'd like more green burial information.",
       'I have a question about aerial ash scattering.'
@@ -214,23 +260,40 @@ export const contactPage = {
 
 export const footer = {
   newsletter: {
-    title: 'Receive news & remembrance updates',
+    title: 'Keep in Contact',
     description: 'Seasonal programs, memorial events, and community gatherings.',
     placeholder: 'Enter your email'
   },
   columns: [
     {
-      title: 'Planning',
-      links: ['Pre-Planning', 'Immediate Need', 'Service Options', 'Veterans Benefits']
+      title: 'Products + Services',
+      links: [
+        { label: 'Traditional Burial Options', href: '/traditional-burial-options/' },
+        { label: 'Popular Cremation Options', href: '/popular-cremation-options/' },
+        { label: 'Resting Places', href: '/resting-places/' },
+        { label: 'Custom Memorials', href: '/custom-memorials/' }
+      ]
     },
     {
-      title: 'Resources',
-      links: ['FAQs', 'Grief Support', 'Community Events', 'Obituaries']
+      title: 'New at CPC',
+      links: [
+        { label: "Angel's Flight", href: '/only-at-cpc/#angels-flight' },
+        { label: 'Aerial Ash Scattering', href: '/only-at-cpc/#aerial-ash-scattering' },
+        { label: 'Green Burial', href: '/only-at-cpc/#green-burial' },
+        { label: 'Hike-In Ash Scattering', href: '/only-at-cpc/#hike-in-ash-scattering' },
+        { label: 'Scattering Gardens', href: '/only-at-cpc/#scattering-gardens' }
+      ]
     },
     {
-      title: 'About',
-      links: ['Our History', 'Our Team', 'Contact', 'Visit Us']
+      title: 'Helpful Resources',
+      links: [
+        { label: 'Schedule Your Visit', href: '/schedule-your-visit/' },
+        { label: 'Locations + Hours', href: '/contact/' },
+        { label: 'Veterans Benefits', href: '/veterans/' },
+        { label: 'Work With Us', href: '/apply/' },
+        { label: 'Privacy policy', href: '/privacy/' }
+      ]
     }
   ],
-  bottom: '© 2024 Calumet Park Memorial. All rights reserved.'
+  bottom: '© 2026 Calumet Park Memorial. All rights reserved.'
 };

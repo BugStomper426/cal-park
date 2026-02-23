@@ -2,11 +2,26 @@
 import { navigation, siteMeta } from '../data/site';
 
 const pathname = Astro.url.pathname;
+
+const isActiveLink = (href?: string) => {
+  if (!href || href.startsWith('http')) {
+    return false;
+  }
+
+  if (href === '/') {
+    return pathname === '/';
+  }
+
+  return pathname === href || pathname.startsWith(href);
+};
+
+const isGroupActive = (children?: { href: string; external?: boolean }[]) =>
+  Boolean(children?.some((child) => !child.external && isActiveLink(child.href)));
 ---
 
-<nav class="bg-white/95 backdrop-blur">
+<nav class="sticky top-0 z-40 border-b border-slatewood-100/80 bg-white/90 backdrop-blur">
   <div class="container-wide flex flex-col gap-4 py-6 lg:flex-row lg:items-center lg:justify-between">
-    <div class="flex items-center gap-4">
+    <a class="flex items-center gap-4" href="/">
       <div class="flex h-12 w-12 items-center justify-center rounded-full bg-calumet-600 text-white">
         <span class="font-serif text-lg">CP</span>
       </div>
@@ -14,23 +29,71 @@ const pathname = Astro.url.pathname;
         <p class="font-serif text-xl text-slatewood-900">{siteMeta.title}</p>
         <p class="text-xs uppercase tracking-[0.2em] text-slatewood-500">Memorial Park</p>
       </div>
-    </div>
-    <ul class="flex flex-wrap gap-6 text-sm font-semibold uppercase tracking-[0.12em] text-slatewood-600">
+    </a>
+
+    <ul class="flex flex-wrap items-center gap-4 text-xs font-semibold uppercase tracking-[0.1em] text-slatewood-600 lg:gap-6">
       {navigation.map((item) => (
-        <li>
-          <a
-            class={`transition hover:text-calumet-600 ${
-              pathname === item.href ? 'text-calumet-700' : ''
-            }`}
-            href={item.href}
-          >
-            {item.label}
-          </a>
+        <li class="relative">
+          {item.children ? (
+            <div class="group/nav-item relative">
+              <button
+                type="button"
+                aria-haspopup="true"
+                class={`inline-flex cursor-pointer items-center rounded-full px-3 py-2 text-slatewood-700 transition duration-200 hover:bg-slatewood-100 hover:text-calumet-700 focus-visible:bg-slatewood-100 focus-visible:text-calumet-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calumet-300 ${
+                  isGroupActive(item.children) ? 'bg-slatewood-100/80 text-calumet-700' : ''
+                }`}
+              >
+                {item.label}
+                <svg
+                  class="ml-1 h-3 w-3 transition group-hover/nav-item:rotate-180 group-focus-within/nav-item:rotate-180"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.94a.75.75 0 111.08 1.04l-4.25 4.514a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </button>
+              <div class="pointer-events-none invisible absolute left-0 top-full z-30 pt-2 opacity-0 transition duration-200 ease-out group-hover/nav-item:pointer-events-auto group-hover/nav-item:visible group-hover/nav-item:opacity-100 group-focus-within/nav-item:pointer-events-auto group-focus-within/nav-item:visible group-focus-within/nav-item:opacity-100">
+                <ul class="min-w-[280px] rounded-2xl border border-slatewood-200 bg-white p-2 shadow-card ring-1 ring-black/5">
+                  {item.children.map((child) => (
+                    <li>
+                      <a
+                        class={`block rounded-xl px-3 py-2 text-[11px] tracking-[0.08em] text-slatewood-700 transition duration-150 hover:bg-slatewood-50 hover:text-calumet-700 focus-visible:bg-slatewood-50 focus-visible:text-calumet-700 focus-visible:outline-none ${
+                          isActiveLink(child.href) ? 'bg-calumet-50/70 text-calumet-700' : ''
+                        }`}
+                        href={child.href}
+                        target={child.external ? '_blank' : undefined}
+                        rel={child.external ? 'noreferrer' : undefined}
+                      >
+                        {child.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ) : (
+            <a
+              class={`rounded-full px-3 py-2 text-slatewood-700 transition duration-200 hover:bg-slatewood-100 hover:text-calumet-700 focus-visible:bg-slatewood-100 focus-visible:text-calumet-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calumet-300 ${
+                isActiveLink(item.href) ? 'bg-slatewood-100/80 text-calumet-700' : ''
+              }`}
+              href={item.href}
+              target={item.external ? '_blank' : undefined}
+              rel={item.external ? 'noreferrer' : undefined}
+            >
+              {item.label}
+            </a>
+          )}
         </li>
       ))}
     </ul>
+
     <div class="flex items-center gap-3">
-      <a class="button-outline" href="/contact/">
+      <a class="button-outline" href="/contact/#schedule">
         Plan a Visit
       </a>
     </div>

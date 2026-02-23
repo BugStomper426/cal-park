@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+
+<BaseLayout
+  title="Pre-Planning | Calumet Park Memorial"
+  description="Pre-planning support, meeting scheduling, and resources from Calumet Park Memorial."
+>
+  <PageHero
+    eyebrow="Our Services"
+    title="Pre-planning with clarity and peace of mind."
+    description="Start early, make decisions together, and document your wishes so your family has confidence when it matters most."
+    primaryCta={{ label: 'Schedule a Meeting', href: '/contact/#schedule' }}
+    secondaryCta={{ label: 'Contact Our Team', href: '/contact/' }}
+  />
+
+  <section class="section-spacing bg-white">
+    <div class="container-wide grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+      <article>
+        <h2 class="section-title">Have the talk</h2>
+        <p class="section-lead">
+          Pre-planning gives families time to discuss values, ceremony preferences, and budget in a calm, unhurried setting.
+        </p>
+        <p class="mt-4 text-slatewood-600">
+          Our counselors guide conversations around burial or cremation options, veterans honors, memorial personalization, and location preferences.
+        </p>
+      </article>
+      <article class="card">
+        <h3 class="font-serif text-2xl text-slatewood-900">Planning benefits</h3>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-slatewood-600">
+          <li>Reduce stress on your family during a difficult time.</li>
+          <li>Document key choices in writing with counselor support.</li>
+          <li>Review service options and pricing transparently.</li>
+          <li>Coordinate with all Calumet Park locations.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-spacing bg-slatewood-100">
+    <div class="container-wide grid gap-6 md:grid-cols-3">
+      <article class="card">
+        <h3 class="font-serif text-2xl text-slatewood-900">Step 1</h3>
+        <p class="mt-3 text-sm text-slatewood-600">Meet with a counselor to review service types and timeline expectations.</p>
+      </article>
+      <article class="card">
+        <h3 class="font-serif text-2xl text-slatewood-900">Step 2</h3>
+        <p class="mt-3 text-sm text-slatewood-600">Choose locations, memorial preferences, and family communication contacts.</p>
+      </article>
+      <article class="card">
+        <h3 class="font-serif text-2xl text-slatewood-900">Step 3</h3>
+        <p class="mt-3 text-sm text-slatewood-600">Finalize documentation and keep copies for your family and advisors.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-spacing bg-white">
+    <div class="container-wide rounded-3xl border border-slatewood-200 bg-slatewood-50 p-8">
+      <h2 class="font-serif text-3xl text-slatewood-900">Forms and resources</h2>
+      <p class="mt-3 text-slatewood-600">Use these resources to prepare for your planning session.</p>
+      <div class="mt-6 flex flex-wrap gap-4">
+        <a class="button-outline" href="/downloads/pre-planning-worksheet.pdf">Pre-planning worksheet</a>
+        <a class="button-outline" href="/downloads/family-discussion-guide.pdf">Family discussion guide</a>
+        <a class="button-primary" href="/contact/#schedule">Schedule a meeting</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

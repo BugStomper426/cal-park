@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+
+const faqGroups = [
+  {
+    id: 'planning',
+    title: 'Planning + Arrangements',
+    faqs: [
+      {
+        q: 'How quickly can we arrange services for an immediate need?',
+        a: 'Our team can start immediate arrangements right away by phone, then schedule in-person support as soon as your family is ready.'
+      },
+      {
+        q: 'Can we pre-plan without selecting every detail now?',
+        a: 'Yes. Most families begin with key preferences and update details over time with counselor guidance.'
+      }
+    ]
+  },
+  {
+    id: 'grounds',
+    title: 'Grounds + Visiting',
+    faqs: [
+      {
+        q: 'How do section, block, and lot numbers work?',
+        a: 'Section identifies the larger area, block narrows location within that section, and lot identifies the specific memorial space.'
+      },
+      {
+        q: 'Can staff help us locate a loved one before we visit?',
+        a: 'Yes. Contact the office with available details and we will help verify records and directions.'
+      }
+    ]
+  },
+  {
+    id: 'services',
+    title: 'Burial + Cremation Services',
+    faqs: [
+      {
+        q: 'What service options are available at Calumet Park?',
+        a: 'Families can choose traditional burial, cremation with memorial gatherings, resting place options, and custom memorial planning.'
+      },
+      {
+        q: 'Are there options for green burial or ash scattering?',
+        a: 'Yes. We offer green burial and several ash scattering options, including aerial and hike-in offerings.'
+      }
+    ]
+  },
+  {
+    id: 'veterans',
+    title: 'Veterans Benefits',
+    faqs: [
+      {
+        q: 'Which documents should families bring for veteran services?',
+        a: 'Bring DD Form 214 and any supporting military records. Our team can help gather additional documentation if needed.'
+      },
+      {
+        q: 'Can Calumet Park help coordinate military honors?',
+        a: 'Yes. We assist with ceremonial planning and benefit-related support for eligible veterans.'
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout title="FAQs | Calumet Park Memorial" description="Frequently asked questions about planning, services, grounds, and veteran benefits.">
+  <PageHero
+    eyebrow="Resources + Education"
+    title="Frequently Asked Questions"
+    description="A single reference page with the most common family questions grouped by topic."
+    primaryCta={{ label: 'Contact Our Team', href: '/contact/' }}
+    secondaryCta={{ label: 'View Services', href: '/services/' }}
+  />
+
+  <section class="section-spacing bg-white">
+    <div class="container-wide grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+      <aside class="rounded-3xl border border-slatewood-200 bg-slatewood-50 p-6">
+        <h2 class="font-serif text-2xl text-slatewood-900">On this page</h2>
+        <ul class="mt-4 space-y-2 text-sm text-slatewood-600">
+          {faqGroups.map((group) => (
+            <li>
+              <a class="hover:text-calumet-700" href={`#${group.id}`}>{group.title}</a>
+            </li>
+          ))}
+        </ul>
+      </aside>
+      <div class="space-y-8">
+        {faqGroups.map((group) => (
+          <section id={group.id} class="rounded-3xl border border-slatewood-200 bg-white p-6">
+            <h3 class="font-serif text-3xl text-slatewood-900">{group.title}</h3>
+            <div class="mt-5 space-y-4">
+              {group.faqs.map((faq) => (
+                <article class="rounded-2xl bg-slatewood-50 p-5">
+                  <h4 class="font-semibold text-slatewood-900">{faq.q}</h4>
+                  <p class="mt-2 text-sm text-slatewood-600">{faq.a}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

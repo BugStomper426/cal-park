@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+
+const requiredItems = [
+  'DD Form 214 or other military discharge paperwork',
+  'Social Security number and date of birth',
+  'Preferred service location and scheduling details',
+  'Name and contact details for next of kin'
+];
+---
+
+<BaseLayout
+  title="Veterans Services | Calumet Park Memorial"
+  description="Veteran honors, benefit guidance, and service planning support at Calumet Park Memorial."
+>
+  <PageHero
+    eyebrow="Our Services"
+    title="Honoring those who served."
+    description="Calumet Park provides veteran-focused support, memorial service coordination, and benefits guidance for military families."
+    primaryCta={{ label: 'Speak With a Veteran Specialist', href: '/contact/' }}
+    secondaryCta={{ label: 'View Veterans Day Event', href: '/veterans-day/' }}
+  />
+
+  <section class="section-spacing bg-white">
+    <div class="container-wide grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+      <article>
+        <h2 class="section-title">Veteran program overview</h2>
+        <p class="section-lead">
+          We coordinate military honors, burial or cremation options, and family guidance from first call to final committal services.
+        </p>
+        <p class="mt-4 text-slatewood-600">
+          Our team can assist with eligibility checks, ceremony planning, memorial personalization, and records needed for benefits processing.
+        </p>
+      </article>
+      <article class="card">
+        <h3 class="font-serif text-2xl text-slatewood-900">How to claim benefits</h3>
+        <p class="mt-3 text-sm text-slatewood-600">Bring the following when meeting with our team:</p>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-slatewood-600">
+          {requiredItems.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-spacing bg-slatewood-100">
+    <div class="container-wide grid gap-6 md:grid-cols-3">
+      <article class="card">
+        <h3 class="font-serif text-2xl text-slatewood-900">Military Honors</h3>
+        <p class="mt-3 text-sm text-slatewood-600">Flag presentation coordination, ceremonial support, and veteran tribute planning.</p>
+      </article>
+      <article class="card">
+        <h3 class="font-serif text-2xl text-slatewood-900">Benefits Guidance</h3>
+        <p class="mt-3 text-sm text-slatewood-600">Assistance navigating available federal, state, and family benefits documentation.</p>
+      </article>
+      <article class="card">
+        <h3 class="font-serif text-2xl text-slatewood-900">Family Support</h3>
+        <p class="mt-3 text-sm text-slatewood-600">One-on-one planning sessions so families can make clear decisions with confidence.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-spacing bg-white">
+    <div class="container-wide rounded-3xl border border-slatewood-200 bg-slatewood-50 p-8 text-center">
+      <h2 class="font-serif text-3xl text-slatewood-900">Need help with veteran arrangements?</h2>
+      <p class="mt-3 text-slatewood-600">Connect with our veteran services team for immediate or pre-planning guidance.</p>
+      <div class="mt-6 flex flex-wrap justify-center gap-4">
+        <a class="button-primary" href="/contact/">Contact Us</a>
+        <a class="button-outline" href="tel:12197698803">Call (219) 769-8803</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

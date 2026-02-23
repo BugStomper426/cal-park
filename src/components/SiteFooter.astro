@@ -24,8 +24,8 @@ import { footer, topBar, siteMeta } from '../data/site';
             <ul class="mt-4 space-y-2 text-sm">
               {column.links.map((link) => (
                 <li>
-                  <a class="transition hover:text-white" href="#">
-                    {link}
+                  <a class="transition hover:text-white" href={link.href}>
+                    {link.label}
                   </a>
                 </li>
               ))}

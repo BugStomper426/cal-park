@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+
+<BaseLayout
+  title="Grief Counseling | Calumet Park Memorial"
+  description="Free grief counseling support, RSVP options, and resources for grieving children."
+>
+  <PageHero
+    eyebrow="Recent Loss"
+    title="Grief counseling support for families and friends."
+    description="Our grief support sessions are free and open to families looking for guidance, practical tools, and compassionate community."
+    primaryCta={{ label: 'RSVP for Support Group', href: '#rsvp' }}
+    secondaryCta={{ label: 'Call Our Team', href: 'tel:12197698803' }}
+  />
+
+  <section class="section-spacing bg-white" id="rsvp">
+    <div class="container-wide grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+      <article class="rounded-3xl border border-slatewood-200 bg-slatewood-50 p-6 md:p-8">
+        <p class="section-eyebrow">RSVP</p>
+        <h2 class="mt-2 font-serif text-3xl text-slatewood-900 md:text-4xl">Reserve your seat for the next session.</h2>
+        <p class="mt-4 text-slatewood-600">
+          Sessions include guided discussion, reflection exercises, and practical grief tools for everyday life.
+        </p>
+        <form class="mt-6 grid gap-5 md:grid-cols-2">
+          <label>
+            <span class="field-label">First Name</span>
+            <input class="field-input" name="firstName" type="text" required />
+          </label>
+          <label>
+            <span class="field-label">Last Name</span>
+            <input class="field-input" name="lastName" type="text" required />
+          </label>
+          <label>
+            <span class="field-label">Email</span>
+            <input class="field-input" name="email" type="email" required />
+          </label>
+          <label>
+            <span class="field-label">Phone</span>
+            <input class="field-input" name="phone" type="tel" required />
+          </label>
+          <label class="md:col-span-2">
+            <span class="field-label">Preferred Session</span>
+            <select class="field-input" name="session" required>
+              <option value="" disabled selected>Select a session</option>
+              <option value="weekday-evening">Weekday Evening Group</option>
+              <option value="saturday-morning">Saturday Morning Group</option>
+              <option value="one-on-one">One-on-One Check-In</option>
+            </select>
+          </label>
+          <label class="md:col-span-2">
+            <span class="field-label">Anything you'd like us to know?</span>
+            <textarea class="field-input min-h-[130px]" name="notes"></textarea>
+          </label>
+          <div class="md:col-span-2">
+            <button class="button-primary" type="submit">Submit RSVP</button>
+          </div>
+        </form>
+      </article>
+
+      <aside class="space-y-5">
+        <article class="card">
+          <p class="text-xs uppercase tracking-[0.2em] text-slatewood-500">Free support</p>
+          <h3 class="mt-2 font-serif text-2xl text-slatewood-900">No cost to attend.</h3>
+          <p class="mt-3 text-sm text-slatewood-600">
+            Counseling sessions are provided as a community service and are available whether or not services were held at Calumet Park.
+          </p>
+        </article>
+        <article class="card">
+          <h3 class="font-serif text-2xl text-slatewood-900">Prefer to RSVP by phone?</h3>
+          <a class="mt-2 block text-lg font-semibold text-calumet-700" href="tel:12197698803">(219) 769-8803</a>
+          <p class="mt-3 text-sm text-slatewood-600">Ask for grief counseling support and a team member will help you register.</p>
+        </article>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section-spacing bg-slatewood-100">
+    <div class="container-wide">
+      <h2 class="section-title">Thoughts for grieving children</h2>
+      <p class="section-lead">Age-aware resources to help children process loss with trusted adults.</p>
+      <div class="mt-8 grid gap-6 lg:grid-cols-3">
+        <article class="card">
+          <h3 class="font-serif text-2xl text-slatewood-900">For younger children</h3>
+          <p class="mt-3 text-sm text-slatewood-600">Use short, clear language, invite questions, and create simple rituals of remembrance.</p>
+        </article>
+        <article class="card">
+          <h3 class="font-serif text-2xl text-slatewood-900">For pre-teens</h3>
+          <p class="mt-3 text-sm text-slatewood-600">Encourage journaling and peer support while keeping routines stable at home and school.</p>
+        </article>
+        <article class="card">
+          <h3 class="font-serif text-2xl text-slatewood-900">For teens</h3>
+          <p class="mt-3 text-sm text-slatewood-600">Provide private space to grieve, practical coping tools, and optional group participation.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

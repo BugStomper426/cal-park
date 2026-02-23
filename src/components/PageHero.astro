@@ -1,0 +1,38 @@
+---
+const {
+  eyebrow,
+  title,
+  description,
+  primaryCta,
+  secondaryCta
+}: {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  primaryCta?: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
+} = Astro.props;
+---
+
+<section class="relative overflow-hidden bg-slatewood-900 py-16 md:py-20">
+  <div class="absolute inset-0 bg-gradient-to-br from-calumet-900/80 via-slatewood-900 to-slatewood-800/95"></div>
+  <div class="container-wide relative max-w-4xl text-white">
+    {eyebrow && <p class="section-eyebrow text-calumet-200">{eyebrow}</p>}
+    <h1 class="mt-4 font-serif text-4xl leading-tight md:text-5xl">{title}</h1>
+    {description && <p class="mt-5 text-lg text-slatewood-200">{description}</p>}
+    {(primaryCta || secondaryCta) && (
+      <div class="mt-8 flex flex-wrap gap-4">
+        {primaryCta && (
+          <a class="button-primary bg-white text-calumet-700 hover:bg-calumet-100" href={primaryCta.href}>
+            {primaryCta.label}
+          </a>
+        )}
+        {secondaryCta && (
+          <a class="button-outline border-white text-white hover:bg-white/10" href={secondaryCta.href}>
+            {secondaryCta.label}
+          </a>
+        )}
+      </div>
+    )}
+  </div>
+</section>

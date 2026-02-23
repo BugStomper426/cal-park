@@ -8,7 +8,12 @@ const { cards } = Astro.props;
       <h3 class="font-serif text-2xl text-slatewood-900">{card.title}</h3>
       <p class="text-sm text-slatewood-600">{card.description}</p>
       <div class="mt-auto">
-        <a class="button-outline" href={card.cta.href}>
+        <a
+          class="button-outline"
+          href={card.cta.href}
+          target={card.cta.external ? '_blank' : undefined}
+          rel={card.cta.external ? 'noreferrer' : undefined}
+        >
           {card.cta.label}
         </a>
       </div>

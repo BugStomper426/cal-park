@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+
+const steps = [
+  'Locate section details from your family records or prior visit notes.',
+  'Identify block and lot information tied to the memorial space.',
+  'Confirm spelling and date details before searching.',
+  'Use directions support to navigate from the main office.'
+];
+---
+
+<BaseLayout
+  title="GraveFinder | Calumet Park Memorial"
+  description="Use Calumet Park GraveFinder instructions and links for locating memorial spaces."
+>
+  <PageHero
+    eyebrow="Resources + Education"
+    title="Calumet Park GraveFinder"
+    description="The interactive locator is being refreshed. Use the steps below for a smooth search and location visit in the meantime."
+    primaryCta={{ label: 'Open Legacy GraveFinder', href: 'https://mycalumetpark.com/' }}
+    secondaryCta={{ label: 'Contact for Directions', href: '/contact/' }}
+  />
+
+  <section class="section-spacing bg-white">
+    <div class="container-wide">
+      <h2 class="section-title">Find a memorial in four steps</h2>
+      <div class="mt-8 grid gap-6 md:grid-cols-2">
+        {steps.map((step, index) => (
+          <article class="card">
+            <p class="text-xs uppercase tracking-[0.2em] text-calumet-600">Step {index + 1}</p>
+            <p class="mt-3 text-sm text-slatewood-600">{step}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-spacing bg-slatewood-100">
+    <div class="container-wide grid gap-8 lg:grid-cols-[1fr_0.9fr]">
+      <article class="card">
+        <h3 class="font-serif text-2xl text-slatewood-900">Need help with section, block, or lot info?</h3>
+        <p class="mt-3 text-sm text-slatewood-600">
+          Our office can help verify records and prepare a route before you arrive.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-4">
+          <a class="button-primary" href="/contact/">Call or Message Us</a>
+          <a class="button-outline" href="tel:12197698803">(219) 769-8803</a>
+        </div>
+      </article>
+      <article class="card">
+        <h3 class="font-serif text-2xl text-slatewood-900">Tutorial</h3>
+        <p class="mt-3 text-sm text-slatewood-600">A quick walkthrough for families using the locator for the first time.</p>
+        <div class="mt-4 overflow-hidden rounded-2xl border border-slatewood-200 bg-slatewood-100 p-6 text-sm text-slatewood-600">
+          Video walkthrough placeholder. Replace with your hosted tutorial embed.
+        </div>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

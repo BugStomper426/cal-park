@@ -1,0 +1,184 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { contactPage } from '../../data/site';
+---
+
+<BaseLayout
+  title="Immediate Need | Calumet Park Memorial"
+  description="Immediate need support, location contacts, and survivor checklist downloads from Calumet Park Memorial."
+>
+  <PageHero
+    eyebrow="Recent Loss"
+    title="We are here for you, right now."
+    description="If your family has experienced a recent loss, our counselors can guide each step of arrangements and documentation with care."
+    primaryCta={{ label: 'Call (219) 769-8803', href: 'tel:12197698803' }}
+    secondaryCta={{ label: 'View Locations', href: '#locations' }}
+  />
+
+  <section id="locations" class="section-spacing bg-white">
+    <div class="container-wide">
+      <h2 class="section-title">All Locations + Phone Support</h2>
+      <p class="section-lead">Reach any location directly for urgent coordination and family support.</p>
+      <div class="mt-8 grid gap-6 lg:grid-cols-2">
+        {contactPage.locations.map((location) => (
+          <article class="card">
+            <h3 class="font-serif text-2xl text-slatewood-900">{location.name}</h3>
+            <p class="mt-2 text-sm text-slatewood-600">{location.address}</p>
+            <div class="mt-4 space-y-1 text-sm text-slatewood-600">
+              <p>
+                <strong>Phone:</strong> <a class="text-calumet-700" href={location.phoneHref}>{location.phone}</a>
+              </p>
+              <p>
+                <strong>Fax:</strong> {location.fax}
+              </p>
+              <p><strong>Hours:</strong></p>
+              <ul class="list-disc pl-5">
+                {location.hours.map((hours) => (
+                  <li>{hours}</li>
+                ))}
+              </ul>
+            </div>
+            <a class="button-outline mt-6" href={location.addressHref} target="_blank" rel="noreferrer">
+              Get Directions
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-spacing bg-slatewood-50">
+    <div class="container-wide grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+      <article class="rounded-3xl border border-slatewood-200 bg-white p-6 md:p-8">
+        <p class="section-eyebrow">Immediate Need Form</p>
+        <h2 class="mt-2 font-serif text-3xl text-slatewood-900 md:text-4xl">Start arrangements in three steps.</h2>
+        <p class="mt-4 text-slatewood-600">
+          This form helps our team prepare before we call you. You can save time by sharing essential details and any supporting documents.
+        </p>
+
+        <form class="mt-8" id="immediate-need-form">
+          <div data-step="1" class="space-y-5">
+            <label class="block">
+              <span class="field-label">Where did the passing occur?</span>
+              <input class="field-input" name="passingLocation" type="text" required />
+            </label>
+            <label class="block">
+              <span class="field-label">Preferred Calumet Park location</span>
+              <select class="field-input" name="preferredLocation" required>
+                <option value="" disabled selected>Select a location</option>
+                {contactPage.locations.map((location) => (
+                  <option value={location.name}>{location.name}</option>
+                ))}
+              </select>
+            </label>
+            <label class="block">
+              <span class="field-label">Urgency</span>
+              <select class="field-input" name="urgency" required>
+                <option value="" disabled selected>Select urgency</option>
+                <option value="within-24-hours">Need support within 24 hours</option>
+                <option value="within-72-hours">Need support within 72 hours</option>
+                <option value="planning-ahead">Planning a meeting soon</option>
+              </select>
+            </label>
+          </div>
+
+          <div data-step="2" class="hidden space-y-5">
+            <label class="block">
+              <span class="field-label">Loved One's Full Name</span>
+              <input class="field-input" name="deceasedName" type="text" required />
+            </label>
+            <label class="block">
+              <span class="field-label">Date of Passing</span>
+              <input class="field-input" name="dateOfPassing" type="date" required />
+            </label>
+            <label class="block">
+              <span class="field-label">Upload Supporting Document</span>
+              <input class="field-input" name="supportingDocument" type="file" accept=".pdf,.doc,.docx,.jpg,.png" />
+            </label>
+          </div>
+
+          <div data-step="3" class="hidden space-y-5">
+            <label class="block">
+              <span class="field-label">Your Full Name</span>
+              <input class="field-input" name="requestorName" type="text" autocomplete="name" required />
+            </label>
+            <label class="block">
+              <span class="field-label">Phone</span>
+              <input class="field-input" name="requestorPhone" type="tel" autocomplete="tel" required />
+            </label>
+            <label class="block">
+              <span class="field-label">Email</span>
+              <input class="field-input" name="requestorEmail" type="email" autocomplete="email" required />
+            </label>
+            <label class="flex items-start gap-3 text-sm text-slatewood-600">
+              <input class="mt-1 h-4 w-4" name="consent" type="checkbox" required />
+              <span>
+                I consent to be contacted by Calumet Park regarding immediate need arrangements and acknowledge this is a request for follow-up.
+              </span>
+            </label>
+          </div>
+
+          <div class="mt-8 flex flex-wrap gap-3 border-t border-slatewood-200 pt-6">
+            <button class="button-outline" id="prev-step" type="button" disabled>Back</button>
+            <button class="button-primary" id="next-step" type="button">Next Step</button>
+            <button class="button-primary hidden" id="submit-step" type="submit">Submit Request</button>
+          </div>
+        </form>
+      </article>
+
+      <aside class="space-y-5">
+        <article class="card">
+          <p class="section-eyebrow">Survivor's Checklists</p>
+          <h3 class="mt-2 font-serif text-2xl text-slatewood-900">Download in your preferred format.</h3>
+          <ul class="mt-4 space-y-3 text-sm text-slatewood-600">
+            <li><a class="text-calumet-700" href="/downloads/survivors-checklist.pdf">Download PDF checklist</a></li>
+            <li><a class="text-calumet-700" href="/downloads/survivors-checklist.docx">Download Word checklist</a></li>
+            <li><a class="text-calumet-700" href="/downloads/survivors-checklist.xlsx">Download Excel checklist</a></li>
+          </ul>
+        </article>
+        <article class="card">
+          <p class="text-xs uppercase tracking-[0.2em] text-slatewood-500">Need immediate help?</p>
+          <a class="mt-2 block font-serif text-3xl text-slatewood-900 hover:text-calumet-700" href="tel:12197698803">
+            (219) 769-8803
+          </a>
+          <p class="mt-3 text-sm text-slatewood-600">Our team is ready to help your family make arrangements with compassion and clarity.</p>
+        </article>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<script is:inline>
+  const steps = Array.from(document.querySelectorAll('[data-step]'));
+  const prevButton = document.getElementById('prev-step');
+  const nextButton = document.getElementById('next-step');
+  const submitButton = document.getElementById('submit-step');
+  let currentStep = 0;
+
+  const syncStep = () => {
+    steps.forEach((step, index) => {
+      step.classList.toggle('hidden', index !== currentStep);
+    });
+
+    if (prevButton instanceof HTMLButtonElement) {
+      prevButton.disabled = currentStep === 0;
+    }
+
+    const isLastStep = currentStep === steps.length - 1;
+    nextButton?.classList.toggle('hidden', isLastStep);
+    submitButton?.classList.toggle('hidden', !isLastStep);
+  };
+
+  prevButton?.addEventListener('click', () => {
+    currentStep = Math.max(0, currentStep - 1);
+    syncStep();
+  });
+
+  nextButton?.addEventListener('click', () => {
+    currentStep = Math.min(steps.length - 1, currentStep + 1);
+    syncStep();
+  });
+
+  syncStep();
+</script>

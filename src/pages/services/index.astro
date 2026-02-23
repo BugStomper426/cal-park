@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+
+const serviceGroups = [
+  {
+    id: 'traditional-burial-options',
+    title: 'Traditional Burial Options',
+    description:
+      'Ground burial, family estate planning, and ceremony support in beautiful, well-kept memorial grounds.',
+    options: ['Ground Burial', 'Community Mausoleum Entombment', 'Private Family Mausoleums']
+  },
+  {
+    id: 'cremation-options',
+    title: 'Popular Cremation Options',
+    description:
+      'Personalized memorial options before, during, and after cremation, including ceremonial gatherings.',
+    options: [
+      'Direct Cremation with Memorial Service',
+      'Witnessed Cremation Options',
+      'Aerial Ash Scattering + Ceremony'
+    ]
+  },
+  {
+    id: 'resting-places',
+    title: 'Resting Places',
+    description:
+      'Permanent memorial choices designed for family visits and long-term remembrance.',
+    options: ['Niche Inurnment', 'Ground Burial of Cremains', "Angel's Flight Inurnment"]
+  },
+  {
+    id: 'custom-memorials',
+    title: 'Custom Memorials',
+    description:
+      'Meaningful personalization through engraved markers, private spaces, and commemorative design.',
+    options: ['Engraved Memorials', 'Family Gathering Installations', 'Themed Tribute Displays']
+  }
+];
+---
+
+<BaseLayout
+  title="Services | Calumet Park Memorial"
+  description="Burial, cremation, resting place, and custom memorial service options at Calumet Park."
+>
+  <PageHero
+    eyebrow="Our Services"
+    title="Burials, cremation, and personalized memorial planning."
+    description="Explore the full range of Calumet Park options and connect with a counselor to build a plan that reflects your family."
+    primaryCta={{ label: 'Talk With a Counselor', href: '/contact/' }}
+    secondaryCta={{ label: 'Read FAQs', href: '/faqs/' }}
+  />
+
+  <section class="section-spacing bg-white">
+    <div class="container-wide">
+      <h2 class="section-title">Services overview</h2>
+      <p class="section-lead">
+        Browse the four primary service groups below. Each section includes common options and a direct path to personalized planning.
+      </p>
+      <div class="mt-8 grid gap-6 md:grid-cols-2">
+        {serviceGroups.map((group) => (
+          <a class="card transition hover:-translate-y-1 hover:border-calumet-200" href={`#${group.id}`}>
+            <h3 class="font-serif text-2xl text-slatewood-900">{group.title}</h3>
+            <p class="mt-3 text-sm text-slatewood-600">{group.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {serviceGroups.map((group) => (
+    <section class="section-spacing bg-slatewood-50" id={group.id}>
+      <div class="container-wide grid gap-8 lg:grid-cols-[1fr_0.8fr]">
+        <div>
+          <p class="section-eyebrow">Service Option</p>
+          <h2 class="mt-2 font-serif text-3xl text-slatewood-900 md:text-4xl">{group.title}</h2>
+          <p class="mt-4 text-slatewood-600">{group.description}</p>
+        </div>
+        <div class="space-y-3">
+          {group.options.map((option) => (
+            <div class="rounded-2xl border border-slatewood-200 bg-white px-5 py-4 text-sm text-slatewood-700">{option}</div>
+          ))}
+          <div class="pt-3">
+            <a class="button-primary" href="/contact/">Plan This Option</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="section-spacing bg-white">
+    <div class="container-wide rounded-3xl border border-slatewood-200 bg-slatewood-50 p-8">
+      <h2 class="font-serif text-3xl text-slatewood-900">Questions about grounds or availability?</h2>
+      <p class="mt-3 text-slatewood-600">Review common planning answers or contact our team for one-on-one guidance.</p>
+      <div class="mt-6 flex flex-wrap gap-4">
+        <a class="button-outline" href="/faqs/">Go to FAQs</a>
+        <a class="button-primary" href="/contact/">Contact Calumet Park</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
